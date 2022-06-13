@@ -18,7 +18,7 @@ std::string	megaphone::amplify(char* messages[], size_t msg_count) {
 	return result;
 }
 
-int main(int argc, char* argv[]) {
+int	main(int argc, char* argv[]) {
 	if (argc == 1) {
 		std::cout << megaphone::default_msg << std::endl;
 		return 1;
