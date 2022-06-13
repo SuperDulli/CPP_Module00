@@ -17,6 +17,7 @@ public:
 private:
 	
 	Contact	contacts[8];
+	size_t	contactCount;
 
 	void	displayShortContact(size_t index);
 	void	displayFullContact(size_t index);

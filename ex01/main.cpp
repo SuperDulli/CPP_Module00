@@ -1,5 +1,6 @@
 #include <iostream>
 #include "Contact.hpp"
+#include "PhoneBook.hpp"
 
 int	main(void) {
 
@@ -9,5 +10,9 @@ int	main(void) {
 	std::cout << c.getFirstName() << std::endl;
 	Contact d = c;
 	std::cout << d.getFirstName() << std::endl;
+
+	PhoneBook pB;
+	pB.add(c);
+	PhoneBook pA = pB;
 	return 0;
 }

@@ -32,6 +32,15 @@ Contact::~Contact(void) {
 	std::cout << "Contact Destructor called" << std::endl;
 }
 
+Contact&	Contact::operator=(const Contact& c) {
+	std::cout << "Contact Assignment operator called" << std::endl;
+	firstName = c.getFirstName();
+	lastName = c.getLastName();
+	nickname = c.getNickname();
+	//TODO: do the copy
+	return *this;
+}
+
 std::string	Contact::getFirstName(void) const {
 	return this->firstName;
 }
