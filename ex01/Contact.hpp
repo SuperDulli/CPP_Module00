@@ -1,7 +1,7 @@
 #ifndef CONTACT
 #define CONTACT
 
-#include <string.h>
+#include <string>
 
 class Contact {
 
@@ -14,7 +14,7 @@ public:
 		std::string lastName,
 		std::string nickname,
 		std::string phoneNumber,
-		std::string secret)
+		std::string secret);
 	~Contact(void);
 	Contact&	operator=(const Contact& c);
 
@@ -28,7 +28,7 @@ private:
 
 	std::string	firstName;
 	std::string	lastName;
-	std::string	nickame;
+	std::string	nickname;
 	std::string	phoneNumber;
 	std::string	secret;
 
