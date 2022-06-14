@@ -23,6 +23,10 @@ show:
 	@echo SRCS=$(SRCS)
 	@echo OBJS=$(OBJS)
 
+debug: fclean
+debug: CFLAGS := $(CFLAGS) -g
+debug: all
+
 $(NAME): $(OBJS) $(SRCS) $(HEADERS)
 	$(CC) $(CFLAGS) $(OBJS) -o $@
 
@@ -32,4 +36,4 @@ $(OBJDIR)/%.o: %.cpp | $(OBJDIR)
 $(OBJDIR):
 	mkdir $(OBJDIR)
 
-.PHONY: all clean fclean re show
+.PHONY: all clean fclean re show debug
