@@ -1,17 +1,9 @@
 #include <iostream>
+#include <ctype.h>
 #include "Contact.hpp"
 
 Contact::Contact(void) {
 	std::cout << "Default Contact Constuctor called" << std::endl;
-}
-
-Contact::Contact(const Contact& c):
-	firstName(c.firstName),
-	lastName(c.lastName),
-	nickname(c.nickname),
-	phoneNumber(c.phoneNumber),
-	secret(c.secret) {
-	std::cout << "Copy Contact Constuctor called" << std::endl;
 }
 
 Contact::Contact(
@@ -19,36 +11,84 @@ Contact::Contact(
 	std::string lastName,
 	std::string nickname,
 	std::string phoneNumber,
-	std::string secret) :
-	firstName(firstName),
-	lastName(lastName),
-	nickname(nickname),
-	phoneNumber(phoneNumber),
-	secret(secret) {
+	std::string secret) {
 	std::cout << "Contact Constuctor called" << std::endl;
+	this->setFirstName(firstName);
+	this->setLastName(lastName);
+	this->setNickname(nickname);
+	this->setPhoneNumber(phoneNumber);
+	this->setSecret(secret);
 }
 
 Contact::~Contact(void) {
-	std::cout << "Contact Destructor called for " << this->nickname <<std::endl;
+	std::cout << "Contact Destructor called for " << this->m_nickname << std::endl;
 }
 
-Contact&	Contact::operator=(const Contact& c) {
-	std::cout << "Contact Assignment operator called" << std::endl;
-	firstName = c.getFirstName();
-	lastName = c.getLastName();
-	nickname = c.getNickname();
-	phoneNumber = c.getPhoneNumber();
-	secret = c.getSecret();
+std::string	Contact::getFirstName(void) const { return this->m_firstName; }
 
-	return *this;
+std::string	Contact::getLastName(void) const { return this->m_lastName; }
+
+std::string	Contact::getNickname(void) const { return this->m_nickname; }
+
+std::string	Contact::getPhoneNumber(void) const { return this->m_phoneNumber; }
+
+std::string	Contact::getSecret(void) const { return this->m_secret; }
+
+void		Contact::setFirstName(std::string firstName) {
+	if (firstName.length() == 0) {
+		std::cerr << "first name cannot be empty" << std::endl;
+		return;
+	}
+	else if (isdigit(firstName.at(0))) {
+		std::cerr << "first name cannot begin with a digit" << std::endl;
+		return;
+	}
+	this->m_firstName = firstName;
 }
 
-std::string	Contact::getFirstName(void) const { return this->firstName; }
+void		Contact::setLastName(std::string lastName) {
+	if (lastName.length() == 0) {
+		std::cerr << "last name cannot be empty" << std::endl;
+		return;
+	}
+	else if (isdigit(lastName.at(0))) {
+		std::cerr << "last name cannot begin with a digit" << std::endl;
+		return;
+	}
+	this->m_lastName = lastName;
+}
 
-std::string	Contact::getLastName(void) const { return this->lastName; }
+void		Contact::setNickname(std::string nickname) {
+	std::cout << "Contact::setNickname called" << std::endl;
+	if (nickname.length() == 0) {
+		std::cerr << "nickname cannot be empty" << std::endl;
+		return;
+	}
+	this->m_nickname = nickname;
+}
 
-std::string	Contact::getNickname(void) const { return this->nickname; }
+void		Contact::setPhoneNumber(std::string phoneNumber) {
+	if (Contact::isValidPhoneNunmber(phoneNumber)) {
+		this->m_phoneNumber = phoneNumber;
+	}
+}
 
-std::string	Contact::getPhoneNumber(void) const { return this->phoneNumber; }
+void		Contact::setSecret(std::string secret) {
+	this->m_secret = secret;
+}
 
-std::string	Contact::getSecret(void) const { return this->secret; }
+bool	Contact::isValidPhoneNunmber(std::string phoneNumber) {
+	if (phoneNumber.length() == 0) {
+		std::cerr << "phone number cannot be empty" << std::endl;
+		return false;
+	}
+	else if (!isdigit(phoneNumber.at(0)) && phoneNumber.at(0) != '+') {
+		std::cerr << "phone number has to start with a digit or +" << std::endl;
+		return false;
+	}
+	else if (phoneNumber.find_first_not_of(" +1234567890") != std::string::npos) {
+		std::cerr << "phone number contains unsupported character(s)" << std::endl;
+		return false;
+	}
+	return true;
+}

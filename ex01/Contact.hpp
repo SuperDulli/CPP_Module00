@@ -8,7 +8,6 @@ class Contact {
 public:
 
 	Contact(void);
-	Contact(const Contact& c);
 	Contact(
 		std::string firstName,
 		std::string lastName,
@@ -16,7 +15,6 @@ public:
 		std::string phoneNumber,
 		std::string secret);
 	~Contact(void);
-	Contact&	operator=(const Contact& c);
 
 	std::string	getFirstName(void) const;
 	std::string	getLastName(void) const;
@@ -24,13 +22,21 @@ public:
 	std::string	getPhoneNumber(void) const;
 	std::string	getSecret(void) const;
 
+	void		setFirstName(std::string firstName);
+	void		setLastName(std::string lastName);
+	void		setNickname(std::string nickname);
+	void		setPhoneNumber(std::string phoneNumber);
+	void		setSecret(std::string secret);
+
+	static bool	isValidPhoneNunmber(std::string phoneNumber);
+
 private:
 
-	std::string	firstName;
-	std::string	lastName;
-	std::string	nickname;
-	std::string	phoneNumber;
-	std::string	secret;
+	std::string	m_firstName;
+	std::string	m_lastName;
+	std::string	m_nickname;
+	std::string	m_phoneNumber;
+	std::string	m_secret;
 
 };
 

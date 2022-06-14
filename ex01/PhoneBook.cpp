@@ -5,15 +5,6 @@ PhoneBook::PhoneBook(void): contactCount(0) {
 	std::cout << "Default PhoneBook Constuctor called" << std::endl;
 }
 
-PhoneBook::PhoneBook(const PhoneBook& pB): contactCount(pB.contactCount) {
-	std::cout << "Copy PhoneBook Constuctor called" << std::endl;
-
-	std::cout << "copy all the contacts over" << std::endl;
-	for (size_t i = 0; i < this->contactCount; i++) {
-		this->contacts[i] = pB.contacts[i];
-	}
-}
-
 PhoneBook::~PhoneBook(void) {
 	std::cout << "PhoneBook Destuctor called" << std::endl;
 }

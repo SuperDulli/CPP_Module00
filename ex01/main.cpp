@@ -23,6 +23,12 @@ void	phone_book_test::createContacts(void) {
 	Contact d = c;
 	Contact	invalid = Contact("Bob", "Andrews", "third", "-1", "has red hair");
 
+	std::cout << c.getFirstName() << std::endl;
+	std::cout << c.getLastName() << std::endl;
+	std::cout << c.getNickname() << std::endl;
+	std::cout << c.getPhoneNumber() << std::endl;
+	std::cout << c.getSecret() << std::endl;
+
 	std::cout << "Creating Contacts (Test-End)" << std::endl;
 }
 

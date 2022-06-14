@@ -8,9 +8,7 @@ class PhoneBook {
 public:
 
 	PhoneBook(void);
-	PhoneBook(const PhoneBook& pB);
 	~PhoneBook(void);
-	PhoneBook& operator=(const PhoneBook& pB);
 
 	void	add(const Contact& c);
 	void	search(void) const;
@@ -23,8 +21,6 @@ private:
 
 	void	displayShortContact(size_t index);
 	void	displayFullContact(size_t index);
-
-	// Contact&	getContact(size_t i);
 
 };
 
