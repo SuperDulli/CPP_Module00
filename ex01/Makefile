@@ -1,20 +1,17 @@
 CC		= c++
 CFLAGS	= -Wall -Wextra -Werror -std=c++98
 
-NAME	= MyAwesomePhonebook
-SRCS	= main.cpp Contact.cpp PhoneBook.cpp
-OBJS	= $(patsubst %.cpp,%.o,$(SRCS))
-
-$(NAME): $(OBJS)
-	$(CC) $(CFLAGS) $^ -o $@
-
-%.o: %.cpp
-	$(CC) $(CFLAGS) -c $^ -o $@
+NAME	= my_awesome_phonebook
+CLASSES	= Contact.cpp PhoneBook.cpp
+HEADERS	= $(patsubst %.cpp,%.hpp,$(CLASSES))
+SRCS	= main.cpp $(CLASSES)
+OBJDIR	= obj
+OBJS	= $(patsubst %.cpp,$(OBJDIR)/%.o,$(SRCS))
 
 all: $(NAME)
 
 clean:
-	rm -f $(OBJS)
+	rm -rf $(OBJDIR)
 
 fclean: clean
 	rm -f $(NAME)
@@ -22,4 +19,17 @@ fclean: clean
 re: fclean
 	make all
 
-.PHONY: all clean fclean re
+show:
+	@echo SRCS=$(SRCS)
+	@echo OBJS=$(OBJS)
+
+$(NAME): $(OBJS) $(SRCS) $(HEADERS)
+	$(CC) $(CFLAGS) $(OBJS) -o $@
+
+$(OBJDIR)/%.o: %.cpp | $(OBJDIR)
+	$(CC) $(CFLAGS) -c $< -o $@
+
+$(OBJDIR):
+	mkdir $(OBJDIR)
+
+.PHONY: all clean fclean re show
