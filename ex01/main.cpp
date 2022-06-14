@@ -9,7 +9,7 @@ namespace phone_book_test {
 
 int	main(void) {
 
-	phone_book_test::createContacts();
+	// phone_book_test::createContacts();
 	phone_book_test::createPhoneBooks();
 
 	return 0;
@@ -36,9 +36,9 @@ void	phone_book_test::createPhoneBooks(void) {
 	std::cout << "Creating PhoneBooks (Test)" << std::endl;
 
 	PhoneBook a;
-	PhoneBook pB = PhoneBook();
-	a.add(Contact("Clone", "#1", "clony", "123", "has no soul"));
-	PhoneBook b = a;
-
+	// PhoneBook pB = PhoneBook();
+	a.add();
+	a.search();
+	// PhoneBook b = a;
 	std::cout << "Creating PhoneBooks (Test-End)" << std::endl;
 }

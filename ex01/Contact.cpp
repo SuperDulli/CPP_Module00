@@ -34,47 +34,53 @@ std::string	Contact::getPhoneNumber(void) const { return this->m_phoneNumber; }
 
 std::string	Contact::getSecret(void) const { return this->m_secret; }
 
-void		Contact::setFirstName(std::string firstName) {
+bool		Contact::setFirstName(std::string firstName) {
 	if (firstName.length() == 0) {
 		std::cerr << "first name cannot be empty" << std::endl;
-		return;
+		return false;
 	}
 	else if (isdigit(firstName.at(0))) {
 		std::cerr << "first name cannot begin with a digit" << std::endl;
-		return;
+		return false;
 	}
 	this->m_firstName = firstName;
+	return true;
 }
 
-void		Contact::setLastName(std::string lastName) {
+bool		Contact::setLastName(std::string lastName) {
 	if (lastName.length() == 0) {
 		std::cerr << "last name cannot be empty" << std::endl;
-		return;
+		return false;
 	}
 	else if (isdigit(lastName.front())) {
 		std::cerr << "last name cannot begin with a digit" << std::endl;
-		return;
+		return false;
 	}
 	this->m_lastName = lastName;
+	return true;
 }
 
-void		Contact::setNickname(std::string nickname) {
-	std::cout << "Contact::setNickname called" << std::endl;
+bool		Contact::setNickname(std::string nickname) {
+	// std::cout << "Contact::setNickname called" << std::endl;
 	if (nickname.length() == 0) {
 		std::cerr << "nickname cannot be empty" << std::endl;
-		return;
+		return false;
 	}
 	this->m_nickname = nickname;
+	return true;
 }
 
-void		Contact::setPhoneNumber(std::string phoneNumber) {
+bool		Contact::setPhoneNumber(std::string phoneNumber) {
 	if (Contact::isValidPhoneNunmber(phoneNumber)) {
 		this->m_phoneNumber = phoneNumber;
+		return true;
 	}
+	return false;
 }
 
-void		Contact::setSecret(std::string secret) {
+bool		Contact::setSecret(std::string secret) {
 	this->m_secret = secret;
+	return true;
 }
 
 bool	Contact::isValidPhoneNunmber(std::string phoneNumber) {

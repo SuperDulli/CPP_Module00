@@ -22,11 +22,11 @@ public:
 	std::string	getPhoneNumber(void) const;
 	std::string	getSecret(void) const;
 
-	void		setFirstName(std::string firstName);
-	void		setLastName(std::string lastName);
-	void		setNickname(std::string nickname);
-	void		setPhoneNumber(std::string phoneNumber);
-	void		setSecret(std::string secret);
+	bool		setFirstName(std::string firstName);
+	bool		setLastName(std::string lastName);
+	bool		setNickname(std::string nickname);
+	bool		setPhoneNumber(std::string phoneNumber);
+	bool		setSecret(std::string secret);
 
 	static bool	isValidPhoneNunmber(std::string phoneNumber);
 
