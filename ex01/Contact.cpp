@@ -29,7 +29,7 @@ Contact::Contact(
 }
 
 Contact::~Contact(void) {
-	std::cout << "Contact Destructor called" << std::endl;
+	std::cout << "Contact Destructor called for " << this->nickname <<std::endl;
 }
 
 Contact&	Contact::operator=(const Contact& c) {
@@ -37,27 +37,18 @@ Contact&	Contact::operator=(const Contact& c) {
 	firstName = c.getFirstName();
 	lastName = c.getLastName();
 	nickname = c.getNickname();
-	//TODO: do the copy
+	phoneNumber = c.getPhoneNumber();
+	secret = c.getSecret();
+
 	return *this;
 }
 
-std::string	Contact::getFirstName(void) const {
-	return this->firstName;
-}
+std::string	Contact::getFirstName(void) const { return this->firstName; }
 
-std::string	Contact::getLastName(void) const {
-	return this->lastName;
-}
+std::string	Contact::getLastName(void) const { return this->lastName; }
 
-std::string	Contact::getNickname(void) const {
-	return this->nickname;
-}
+std::string	Contact::getNickname(void) const { return this->nickname; }
 
-std::string	Contact::getPhoneNumber(void) const {
-	return this->phoneNumber;
-}
+std::string	Contact::getPhoneNumber(void) const { return this->phoneNumber; }
 
-std::string	Contact::getSecret(void) const {
-	return this->secret;
-}
-
+std::string	Contact::getSecret(void) const { return this->secret; }
