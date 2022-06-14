@@ -51,7 +51,7 @@ void		Contact::setLastName(std::string lastName) {
 		std::cerr << "last name cannot be empty" << std::endl;
 		return;
 	}
-	else if (isdigit(lastName.at(0))) {
+	else if (isdigit(lastName.front())) {
 		std::cerr << "last name cannot begin with a digit" << std::endl;
 		return;
 	}
@@ -82,7 +82,7 @@ bool	Contact::isValidPhoneNunmber(std::string phoneNumber) {
 		std::cerr << "phone number cannot be empty" << std::endl;
 		return false;
 	}
-	else if (!isdigit(phoneNumber.at(0)) && phoneNumber.at(0) != '+') {
+	else if (!isdigit(phoneNumber.front()) && phoneNumber.front() != '+') {
 		std::cerr << "phone number has to start with a digit or +" << std::endl;
 		return false;
 	}
