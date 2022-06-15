@@ -78,7 +78,7 @@ void	PhoneBook::add(const Contact& c) {
 		(this->m_contacts[insertPos].*setters[i])((c.*getters[i])());
 	}
 	this->m_contactCount++;
-	std::cout << "Contact added at index:" << insertPos << std::endl;
+	std::cout << "Contact added at index:" << insertPos + 1 << std::endl;
 }
 
 void	PhoneBook::search(void) const {
@@ -100,7 +100,7 @@ void	PhoneBook::search(void) const {
 		max = PhoneBook::maxContactCount;
 	}
 	if (getIndexFromUser(&index, max)) {
-		displayFullContact(index);
+		displayFullContact(index - 1);
 	}
 }
 
@@ -129,7 +129,7 @@ bool	PhoneBook::getIndexFromUser(size_t* index, size_t max) const {
 			*index = (size_t)nb;
 			return true;
 		}
-		std::cerr << "index must be between 0 and " << max << std::endl;
+		std::cerr << "index must be between 1 and " << max << std::endl;
 	}
 	std::cerr << "To many failed attempts" << std::endl;
 	return false;
