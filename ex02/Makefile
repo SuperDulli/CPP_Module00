@@ -55,4 +55,4 @@ $(MYLOG): $(NAME)
 $(INTRALOG):
 	curl https://projects.intra.42.fr/uploads/document/document/9239/19920104_091532.log > $(INTRALOG)
 
-.PHONY: all clean fclean re show debug
+.PHONY: all clean fclean re show debug compare
