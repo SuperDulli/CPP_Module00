@@ -13,20 +13,21 @@ public:
 	void	add(void);
 	void	search(void) const;
 
-	// static size_t		getMaxContactCount(void);
-	
 private:
 	
 	static const size_t	maxContactCount = 8;
 	Contact				m_contacts[maxContactCount];
 	size_t				m_contactCount;
 
+	void				add(const Contact& c);
+
 	void				displayShortContact(size_t index) const;
 	void				displayFullContact(size_t index) const;
+	void				displayHeader(void) const;
 
-	static void			configureOutput(void);
-	static std::string	truncate(std::string s, size_t len);
-	static bool			getIndexFromUser(size_t* index, size_t max);
+	void				configureOutput(void) const ;
+	std::string			truncate(std::string s, size_t len) const ;
+	bool				getIndexFromUser(size_t* index, size_t max) const;
 };
 
 #endif

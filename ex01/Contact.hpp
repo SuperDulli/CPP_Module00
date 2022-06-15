@@ -3,17 +3,12 @@
 
 #include <string>
 
+
 class Contact {
 
 public:
 
 	Contact(void);
-	Contact(
-		std::string firstName,
-		std::string lastName,
-		std::string nickname,
-		std::string phoneNumber,
-		std::string secret);
 	~Contact(void);
 
 	std::string	getFirstName(void) const;
@@ -40,4 +35,8 @@ private:
 
 };
 
+typedef bool (Contact::* Csetter)(std::string);
+typedef std::string(Contact::* Cgetter)(void) const;
+
 #endif
+
