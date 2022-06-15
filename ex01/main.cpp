@@ -20,7 +20,7 @@ int	main(void) {
 		} else if (!input.compare("EXIT")) {
 			break ;
 		} else {
-			std::cout << input << " :Command not supported" << std::endl;
+			std::cerr << input << " :Command not supported" << std::endl;
 		}
 	}
 	return 0;

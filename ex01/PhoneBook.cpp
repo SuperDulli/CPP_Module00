@@ -33,7 +33,7 @@ void	PhoneBook::add(void) {
 
 	std::cout << "ADD Contact. Please provide info about the contact"
 		<< std::endl;
-	while (i < hintCount && failed_attempts <= 3)
+	while (i < hintCount && failed_attempts < 3)
 	{
 		std::cout << hints[i];
 		if (!std::getline(std::cin, input)) {
@@ -109,7 +109,7 @@ bool	PhoneBook::getIndexFromUser(size_t* index, size_t max) const {
 	int			nb = -1;
 	int			attempts = 0;
 
-	while (attempts <= 3)
+	while (attempts < 3)
 	{
 		std::cout
 			<< "Please enter the index of the contact you want to see more: "
@@ -122,16 +122,16 @@ bool	PhoneBook::getIndexFromUser(size_t* index, size_t max) const {
 			nb = std::stoi(input, nullptr);
 		}
 		catch (std::invalid_argument) {
-			std::cout << "Invalid index." << std::endl;
+			std::cerr << "Invalid index." << std::endl;
 			continue;
 		}
 		if (1 <= nb && nb <= (int)max) {
 			*index = (size_t)nb;
 			return true;
 		}
-		std::cout << "index must be between 0 and " << max << std::endl;
+		std::cerr << "index must be between 0 and " << max << std::endl;
 	}
-	std::cout << "To many failed attempts" << std::endl;
+	std::cerr << "To many failed attempts" << std::endl;
 	return false;
 }
 
